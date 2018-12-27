@@ -42,12 +42,14 @@ function(get_boots_lib_b2_args)
 
     # Set up platform-specific b2 (bjam) command line arguments
     if(MSVC)
-        if(MSVC11)
+        if(MSVC_TOOLSET_VERSION EQUAL 110)
             list(APPEND b2Args toolset=msvc-11.0)
-        elseif(MSVC12)
+        elseif(MSVC_TOOLSET_VERSION EQUAL 120)
             list(APPEND b2Args toolset=msvc-12.0)
-        elseif(MSVC14)
+        elseif(MSVC_TOOLSET_VERSION EQUAL 140)
             list(APPEND b2Args toolset=msvc-14.0)
+        elseif(MSVC_TOOLSET_VERSION EQUAL 141)
+            list(APPEND b2Args toolset=msvc-14.1)            
         endif()
         
         list(APPEND b2Args
